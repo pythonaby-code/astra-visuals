@@ -579,19 +579,17 @@
     font-size: 16px;
   }
 
-  .feature-text li {
-    display: flex;
-    gap: 11px;
-    align-items: baseline;
-  }
+  /* ⚠ Не флекс: он вынес бы <code> внутри пункта в отдельную колонку. */
+  .feature-text li { position: relative; padding-left: 17px; }
 
   .feature-text li::before {
     content: "";
+    position: absolute;
+    left: 0;
+    top: .62em;
     width: 6px; height: 6px;
     border-radius: 2px;
     background: var(--accent);
-    flex: none;
-    translate: 0 -2px;
   }
 
   .frame {
@@ -752,15 +750,16 @@
     font-size: 15.5px;
   }
 
-  .plan li { display: flex; gap: 10px; align-items: baseline; }
+  .plan li { position: relative; padding-left: 16px; }
 
   .plan li::before {
     content: "";
+    position: absolute;
+    left: 0;
+    top: .62em;
     width: 6px; height: 6px;
     border-radius: 2px;
     background: var(--accent);
-    flex: none;
-    translate: 0 -2px;
   }
 
   .plan.soon li::before { background: var(--dim); }
