@@ -1,0 +1,331 @@
+<title>Сутки Astra Visuals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Manrope:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap">
+
+<style>
+  /* Мод фиолетово-чёрный, и страница живёт в том же одном тёмном мире —
+     как и его сайт. Поэтому фон и все краски заданы явно, без второй темы. */
+  :root {
+    --ground:   #08070d;
+    --surface:  #14111f;
+    --raise:    #1b1729;
+    --line:     rgba(168, 85, 247, .18);
+    --hair:     rgba(236, 233, 245, .09);
+    --text:     #ece9f5;
+    --muted:    #a29bb6;
+    --dim:      #6f6885;
+    --accent:   #a855f7;
+    --deep:     #6d3cd6;
+    --done:     #7dd87d;
+    --wait:     #e8c168;
+
+    --display: "Unbounded", "Trebuchet MS", sans-serif;
+    --body:    "Manrope", "Segoe UI", system-ui, sans-serif;
+    --mono:    "JetBrains Mono", ui-monospace, Consolas, monospace;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    padding-block: clamp(40px, 7vw, 76px) clamp(48px, 8vw, 88px);
+    padding-inline: 20px;
+    background: var(--ground);
+    background-image: radial-gradient(900px 420px at 50% -8%, rgba(109, 60, 214, .30), transparent 70%);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 16.5px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    width: 100%;
+    max-width: 760px;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(34px, 5vw, 52px);
+  }
+
+  h1, h2, h3 { font-family: var(--display); margin: 0; text-wrap: balance; }
+
+  h1 {
+    font-weight: 800;
+    font-size: clamp(30px, 5.6vw, 46px);
+    line-height: 1.06;
+    letter-spacing: -.02em;
+  }
+
+  h1 b { color: var(--accent); font-weight: 800; }
+
+  h2 { font-weight: 800; font-size: clamp(19px, 2.6vw, 23px); line-height: 1.25; }
+
+  p { margin: 0; }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  /* ===== Шапка ===== */
+  .head { display: flex; flex-direction: column; gap: 16px; }
+
+  .head p { color: var(--muted); max-width: 60ch; }
+
+  /* ===== Плашки: ровно те, что мод рисует в игре ===== */
+  .plates { display: flex; flex-wrap: wrap; gap: 9px; }
+
+  .plate {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    background: rgba(27, 23, 41, .8);
+    border: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .plate .k { color: var(--dim); }
+  .plate .k::after { content: ""; display: inline-block; width: 1px; height: 11px; margin-left: 9px; background: var(--hair); vertical-align: -1px; }
+  .plate .v { color: var(--accent); }
+  .plate .v .was { color: var(--dim); }
+
+  /* ===== Лента заходов ===== */
+  .runs {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(26px, 4vw, 38px);
+    position: relative;
+    padding-left: 26px;
+  }
+
+  .runs::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 7px;
+    bottom: 7px;
+    width: 1px;
+    background: linear-gradient(180deg, var(--accent), rgba(168, 85, 247, .12));
+  }
+
+  .run { position: relative; display: flex; flex-direction: column; gap: 12px; }
+
+  .run::before {
+    content: "";
+    position: absolute;
+    left: -26px;
+    top: 7px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 4px rgba(168, 85, 247, .16);
+  }
+
+  .run.cut::before { background: var(--wait); box-shadow: 0 0 0 4px rgba(232, 193, 104, .16); }
+
+  .when {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--dim);
+  }
+
+  .run ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    color: var(--muted);
+  }
+
+  .run li { display: flex; gap: 11px; align-items: baseline; }
+
+  .run li::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 2px;
+    background: var(--accent);
+    flex: none;
+    translate: 0 -2px;
+  }
+
+  .run li b { color: var(--text); font-weight: 700; }
+
+  code {
+    font-family: var(--mono);
+    font-size: 13.5px;
+    background: rgba(168, 85, 247, .13);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 1px 6px;
+    color: var(--text);
+    white-space: nowrap;
+  }
+
+  /* Пометка у оборванного захода — единственное место с жёлтым */
+  .note {
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    padding: 11px 14px;
+    border-radius: 10px;
+    background: rgba(232, 193, 104, .07);
+    border-left: 2px solid var(--wait);
+    color: var(--muted);
+    font-size: 15px;
+  }
+
+  .note b { color: var(--wait); font-weight: 700; }
+
+  /* ===== Что осталось ===== */
+  .rest {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: clamp(20px, 3vw, 28px);
+    border-radius: 14px;
+    background: var(--surface);
+    border: 1px solid var(--hair);
+  }
+
+  .rest ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 11px; color: var(--muted); }
+  .rest li { display: flex; gap: 11px; align-items: baseline; }
+  .rest li::before { content: ""; width: 6px; height: 6px; border-radius: 2px; background: var(--wait); flex: none; translate: 0 -2px; }
+  .rest li b { color: var(--text); font-weight: 700; }
+
+  footer {
+    color: var(--dim);
+    font-size: 14px;
+    font-family: var(--mono);
+    border-top: 1px solid var(--hair);
+    padding-top: 20px;
+  }
+
+  @media (max-width: 430px) {
+    .runs { padding-left: 22px; }
+    .run::before { left: -22px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+
+<div class="page">
+
+  <header class="head">
+    <span class="eyebrow">Суббота, 12 сентября 2026</span>
+    <h1>Что поменялось<br>в <b>Astra Visuals</b> за сутки</h1>
+    <p>Четыре захода подряд: шрифты утром, предупреждения днём, весь список идей вечером
+      и проверка с починкой ночью. Мод вырос почти вдвое.</p>
+    <div class="plates">
+      <span class="plate"><span class="k">мод</span><span class="v"><span class="was">153 874</span> → 252 563 Б</span></span>
+      <span class="plate"><span class="k">разделов</span><span class="v"><span class="was">8</span> → 10</span></span>
+      <span class="plate"><span class="k">шрифтов</span><span class="v"><span class="was">1</span> → 4</span></span>
+      <span class="plate"><span class="k">настроек</span><span class="v">104</span></span>
+      <span class="plate"><span class="k">новых файлов</span><span class="v">12</span></span>
+    </div>
+  </header>
+
+  <div class="runs">
+
+    <section class="run">
+      <span class="when">Утро · заход первый</span>
+      <h2>Выбор шрифта в меню</h2>
+      <ul>
+        <li><b>Четыре шрифта</b> в разделе «Оформление», переключаются на лету: Обычный,
+          Гладкий, Пиксельный и Консольный — «как в терминале», по твоей просьбе.</li>
+        <li>Гладкий пришлось менять дважды: сначала Inter, потом Roboto — и это был <b>промах</b>,
+          я взял шрифт лаунчера Nursultan, а не его меню в игре. Опознал по твоему кадру
+          числами и поставил Arimo.</li>
+        <li>«В консоли шрифт толще» — <b>ты был прав</b>, и дело оказалось не в шрифте:
+          игра сама тоньшит буквы на 19 %. Вылечено весом, а не заменой.</li>
+        <li>Попутно мод научился отдавать свои картинки и шрифты <b>без Fabric API</b> —
+          иначе игра их просто не видела.</li>
+      </ul>
+    </section>
+
+    <section class="run">
+      <span class="when">День · заход второй</span>
+      <h2>Первое напоминание об эффектах</h2>
+      <ul>
+        <li>Строка над хотбаром: настоящий значок эффекта, имя и счёт секунд — «Сила · 8 с».</li>
+        <li>Цвет по срочности, мигание под конец, звук один раз на эффект, перетаскивание мышью.</li>
+        <li>Отдельная плашка «Эффекты и время».</li>
+      </ul>
+      <div class="note"><b>Мимо.</b>
+        <span>Ты имел в виду другое — плашку снизу справа с фразой целиком. Вечером переделал.</span></div>
+    </section>
+
+    <section class="run cut">
+      <span class="when">Вечер · заход третий</span>
+      <h2>Весь список идей, кроме шестой и восьмой</h2>
+      <ul>
+        <li><b>Предупреждение твоей фразой</b> снизу справа: «Осторожно! Зелье невидимости
+          вот-вот закончится!» — со счётом секунд и звуком.</li>
+        <li><b>Плашка всех эффектов</b> с временем до конца каждого; плохие названы красным.</li>
+        <li><b>Броня вот-вот сломается</b> и <b>здоровье на исходе</b> — тем же способом,
+          плюс красная кромка экрана.</li>
+        <li><b>Полоски здоровья</b> над теми, кого видно, и <b>счёт боя</b>: нанёс, получил, ударов.</li>
+        <li><b>Метки по координатам</b>: пишешь в чат <code>.gps 845 72 2338</code> — и видишь,
+          сколько блоков осталось. Место смерти отмечается само.</li>
+        <li>Два старых долга закрыты: надписи на ванильных кнопках следуют за шрифтом,
+          и знак-луна встал в угол главного экрана.</li>
+      </ul>
+      <div class="note"><b>Заход оборвался на лимите.</b>
+        <span>Мод был собран, но не поставлен тебе и не проверен целиком — у тебя в модах
+          полдня лежала сборка от обеда.</span></div>
+    </section>
+
+    <section class="run">
+      <span class="when">Ночь · заход четвёртый</span>
+      <h2>Проверка, починка и выкладка</h2>
+      <ul>
+        <li>Всё вечернее <b>проверено в живой игре</b> по одному и поставлено тебе в моды.</li>
+        <li>Разбор кода дал <b>девять замечаний</b> — все починены. Тяжёлое: предупреждение,
+          лежащее на кнопке расстановки, нельзя было схватить, а попытка стирала всю расстановку.
+          Я это видел своими глазами днём и <b>записал в плюс</b> — ошибка была в моей оценке,
+          не в коде.</li>
+        <li>Ещё из найденного: метка места смерти не слушала выключатель, своё сердце рисовалось
+          вдвое мельче соседних значков, правый щелчок мыши переставлял плашки, а испорченная
+          метка в файле уронила бы сохранение всех настроек.</li>
+        <li>И один изъян нашёл сам: кнопка «Расставить как на видео» клала плашку эффектов
+          прямо на часы.</li>
+        <li><b>Сайт обновлён и выложен</b>: предупреждения, метки, шрифты, десять разделов.
+          По ссылке до этого висел вид недельной давности.</li>
+      </ul>
+    </section>
+
+  </div>
+
+  <section class="rest">
+    <h2>Что осталось за тобой</h2>
+    <ul>
+      <li><b>Неверное хп в карточке игрока.</b> Как встретишь снова — переключи «Здоровье
+        в карточке» на «Числами» и назови два числа: что показала карточка и сколько было
+        на самом деле. Без этого чиню вслепую.</li>
+      <li><b>Звук предупреждений.</b> Их пять на выбор, а слышать я не умею — проверял субтитрами.
+        Переключи и выбери сам.</li>
+      <li><b>Идеи 6 и 8</b> — кто зашёл и вышел с сервера, таймер воздуха под водой.
+        Ты их вычеркнул; лежат, если захочешь.</li>
+    </ul>
+  </section>
+
+  <footer>Minecraft 1.21.11 · Fabric · astravisuals-1.0.0.jar · 252 563 байта</footer>
+
+</div>
