@@ -469,10 +469,21 @@
     background: rgba(4, 3, 8, .87);
     backdrop-filter: blur(10px);
     opacity: 0;
-    transition: opacity .28s ease;
+    /* ⚠⚠⚠ Прозрачное окно всё равно ловит мышь. Без этой строки закрытый
+       просмотр обоев висел поверх ВСЕЙ страницы и перехватывал каждый клик:
+       ни одна кнопка на сайте не работала, при этом на вид всё было цело.
+       Прячем и для мыши, и для чтения с экрана — не только для глаз. */
+    pointer-events: none;
+    visibility: hidden;
+    transition: opacity .28s ease, visibility 0s linear .28s;
   }
 
-  .box.on { opacity: 1; }
+  .box.on {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+    transition: opacity .28s ease, visibility 0s;
+  }
 
   .box-inner {
     width: min(1020px, 100%);
