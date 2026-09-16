@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Astra Visuals — клиентский мод для Minecraft 1.21.11 на Fabric: свой главный экран, плашки HUD, предупреждения и метки по координатам.">
+<meta name="description" content="Astra Visuals — клиентский мод для Minecraft 1.21.11, 1.21.1 и 1.16.5 на Fabric: свой главный экран, плашки HUD, бой, косметика, свечение и двенадцать разделов настроек.">
 <meta property="og:title" content="Astra Visuals">
-<meta property="og:description" content="Astra Visuals — клиентский мод для Minecraft 1.21.11 на Fabric: свой главный экран, плашки HUD, предупреждения и метки по координатам.">
+<meta property="og:description" content="Astra Visuals — клиентский мод для Minecraft 1.21.11, 1.21.1 и 1.16.5 на Fabric: свой главный экран, плашки HUD, бой, косметика, свечение и двенадцать разделов настроек.">
 <meta property="og:type" content="website">
 <title>Astra Visuals</title>
 <link rel="icon" type="image/png" sizes="32x32" href="assets/logo/mark-moon-32.png">
@@ -650,6 +650,38 @@
   .menu-card span { color: var(--dim); font-size: 14px; }
 
   /* Список разделов */
+  /* ===== Что нового: карточки без кадров ===== */
+  .news {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+    gap: 16px;
+    margin-top: 42px;
+  }
+
+  .news-card {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding: 22px 22px 24px;
+    border-radius: var(--r-md);
+    border: 1px solid var(--line-soft);
+    background: var(--ground-soft);
+    transition: border-color .2s ease, transform .25s cubic-bezier(.2, .7, .2, 1);
+  }
+
+  .news-card:hover { border-color: var(--line); transform: translateY(-4px); }
+
+  .news-card .tag {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--dim);
+  }
+
+  .news-card h3 { font-size: 18px; font-weight: 800; line-height: 1.25; }
+  .news-card p { color: var(--muted); font-size: 15px; }
+
   .chips {
     display: flex;
     flex-wrap: wrap;
@@ -892,6 +924,7 @@
     <a class="logo" href="#top"><img class="mark" src="assets/logo/mark-moon.svg" width="16" height="16" alt="">ASTRA <b>VISUALS</b></a>
     <nav>
       <a href="#features">Возможности</a>
+      <a href="#new">Новое</a>
       <a href="#sections">Разделы</a>
       <a href="#walls">Обои</a>
       <a href="#plans">Версии</a>
@@ -907,10 +940,11 @@
     <canvas id="stars" aria-hidden="true"></canvas>
     <div class="wrap">
       <div class="hero-head">
-        <span class="eyebrow">Minecraft 1.21.11 · Fabric · 250 КБ</span>
+        <span class="eyebrow">Minecraft 1.21.11 · 1.21.1 · 1.16.5 · Fabric</span>
         <h1>Игра, которая наконец<br>выглядит <span>по‑твоему</span></h1>
         <p class="lead">Astra Visuals — клиентский мод: свой главный экран с часами и обоями, жидкое стекло во всех окнах,
-          плашки HUD, которые двигаются мышью, предупреждения «эффект вот-вот кончится» и десять разделов настроек под правым Shift. Ставится одним файлом.</p>
+          плашки HUD, которые двигаются мышью, предупреждения «эффект вот-вот кончится», бой с кругом досягаемости
+          и кольцом под целью, своя косметика и двенадцать разделов настроек под правым Shift. Ставится одним файлом.</p>
         <div class="cta-row">
           <a class="btn btn-primary" href="#install">Скачать бесплатно</a>
           <a class="btn btn-ghost" href="#features">Посмотреть возможности</a>
@@ -947,12 +981,12 @@
       <p class="shot-note">Живой главный экран: обои листаются сами, часы идут по-настоящему. Кадр из игры — ниже.</p>
 
       <div class="facts">
-        <span class="plate"><span class="k">разделов</span><span class="v">10</span></span>
-        <span class="plate"><span class="k">настроек</span><span class="v">100+</span></span>
+        <span class="plate"><span class="k">разделов</span><span class="v">12</span></span>
+        <span class="plate"><span class="k">настроек</span><span class="v">185</span></span>
+        <span class="plate"><span class="k">версий игры</span><span class="v">3</span></span>
         <span class="plate"><span class="k">обоев</span><span class="v">6</span></span>
-        <span class="plate"><span class="k">тем</span><span class="v">4</span></span>
+        <span class="plate"><span class="k">тем</span><span class="v">8</span></span>
         <span class="plate"><span class="k">шрифтов</span><span class="v">4</span></span>
-        <span class="plate"><span class="k">акцентов</span><span class="v">8</span></span>
         <span class="plate"><span class="k">Fabric API</span><span class="v">не нужен</span></span>
       </div>
     </div>
@@ -977,8 +1011,8 @@
             вместо серых ванильных прямоугольников. Один переключатель на всю игру.</p>
           <ul>
             <li>Стекло в меню, инвентаре и на паузе</li>
-            <li>Четыре темы: Аметист, Бирюза, Закат, Полночь</li>
-            <li>Восемь акцентных цветов и три профиля настроек</li>
+            <li>Восемь тем: Аметист, Бирюза, Закат, Полночь, Чёрный космос, Роза, Изумруд, Пепел</li>
+            <li>Тринадцать готовых акцентов и любой свой цвет</li>
             <li>Четыре шрифта: обычный, гладкий, пиксельный и консольный</li>
           </ul>
         </div>
@@ -1009,9 +1043,11 @@
         <div class="feature-text">
           <h3>Плашки HUD, которые двигаются мышью</h3>
           <p class="lead">Координаты, компас, часы, скорость, предмет в руке, время до ночи — каждая плашка
-            включается отдельно и перетаскивается в любой угол экрана.</p>
+            включается отдельно и перетаскивается в любой угол экрана. Или собирается в одно стекло: столбиком или строкой.</p>
           <ul>
             <li>Прозрачность и акцентные значения настраиваются</li>
+            <li>Рюкзак прямо на экране, сытость с насыщением и счётчик тотемов</li>
+            <li>Свой список игроков на Tab и свой экран клавиш</li>
             <li>Плашка цели: здоровье, броня и расстояние</li>
             <li>Свой прицел — раскрывается в момент удара</li>
           </ul>
@@ -1039,13 +1075,138 @@
     </div>
   </section>
 
+  <section id="new" style="border-top:1px solid var(--line-soft)">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <span class="eyebrow">Новое · 14 и 15 сентября</span>
+        <h2>Девятнадцать новых вещей за два дня</h2>
+        <p class="lead">Бой, косметика, свечение, свои на сервере и утилиты на экране. Всё это уже в файле,
+          который лежит ниже, — и всё выключается по отдельности.</p>
+      </div>
+
+      <div class="news">
+        <article class="news-card reveal">
+          <span class="tag">Бой</span>
+          <h3>Круг досягаемости</h3>
+          <p>Круг на земле показывает, докуда ты реально дотянешься. Считается честно — от глаз до коробки
+            существа, а не от середины к середине.</p>
+        </article>
+        <article class="news-card reveal">
+          <span class="tag">Бой</span>
+          <h3>Кольцо под целью</h3>
+          <p>Под тем, по кому бьёшь, лежит кольцо — и плавает вверх-вниз, чтобы цель не терялась в толпе.</p>
+        </article>
+        <article class="news-card reveal">
+          <span class="tag">Бой</span>
+          <h3>Тотемы, серия и вспышка</h3>
+          <p>Сколько тотемов осталось, сколько ударов подряд ты нанёс и какого цвета вспыхивает тот,
+            кому больно, — цвет выбираешь сам.</p>
+        </article>
+        <article class="news-card reveal">
+          <span class="tag">Бой</span>
+          <h3>Подпись стрелы и след снаряда</h3>
+          <p>У летящей стрелы видно, чья она. За жемчугом, снежком и стрелой тянется хвост — видно,
+            куда ушёл бросок.</p>
+        </article>
+        <article class="news-card reveal">
+          <span class="tag">Бой</span>
+          <h3>Бьющееся сердце</h3>
+          <p>Когда здоровья мало, на экране бьётся сердце — порог и цвет свои.</p>
+        </article>
+        <article class="news-card reveal">
+          <span class="tag">Косметика</span>
+          <h3>Шляпы, нимб, плащ, крылья, спутники</h3>
+          <p>Собраны из настоящих текселей по развёрткам, а не из тонких линий: плащ со знаком-луной,
+            нимб «свечение» или «искры», спутники — кристаллы, звёзды, луны или кольца.</p>
+        </article>
+        <article class="news-card reveal">
+          <span class="tag">Косметика</span>
+          <h3>Ничего не закрывает руки</h3>
+          <p>То, что висит за спиной, прячется по силуэту игрока: спереди видно тебя, а не крылья.</p>
+        </article>
+        <article class="news-card reveal">
+          <span class="tag">Свои</span>
+          <h3>Свой узнаёт своего</h3>
+          <p>Кто на этом же сервере с модом — у того рядом с ником знак-луна, и его косметика видна.
+            В меню честно написано, что именно уходит наружу.</p>
+        </article>
+        <article class="news-card reveal">
+          <span class="tag">Свечение</span>
+          <h3>Свечение персонажей</h3>
+          <p>Обводка или уголки вокруг игроков и существ. Толщина — доля силуэта, поэтому далёкая курица
+            не превращается в цветной прямоугольник.</p>
+        </article>
+        <article class="news-card reveal">
+          <span class="tag">Свечение</span>
+          <h3>Trails — след лентой</h3>
+          <p>За идущим тянется высокая полоса. Гаснет по времени, а не по числу шагов, и рисуется одной
+            фигурой, без стыков и полосок.</p>
+        </article>
+        <article class="news-card reveal">
+          <span class="tag">Свечение</span>
+          <h3>Пыль в воздухе</h3>
+          <p>Светящиеся крупинки вокруг игрока: сколько их, какого цвета и насколько яркие — на ползунках.</p>
+        </article>
+        <article class="news-card reveal">
+          <span class="tag">Экран</span>
+          <h3>Остров уведомлений</h3>
+          <p>Всё, что мод хочет сказать, приезжает сверху одной таблеткой — как на телефоне.</p>
+        </article>
+        <article class="news-card reveal">
+          <span class="tag">Сеть</span>
+          <h3>Возвращение на сервер</h3>
+          <p>Выкинуло с сервера — мод сам предлагает вернуться, ждёт и считает попытки.</p>
+        </article>
+        <article class="news-card reveal">
+          <span class="tag">Экран</span>
+          <h3>Рюкзак прямо на экране</h3>
+          <p>Три ряда инвентаря поверх игры. Предметы рисует сама игра, поэтому чары и прочность настоящие,
+            а панель таскается мышью.</p>
+        </article>
+        <article class="news-card reveal">
+          <span class="tag">Экран</span>
+          <h3>Заглянуть в шалкер</h3>
+          <p>Наводишь на ящик — видишь его настоящую сетку, вещи на своих местах. На каждую вещь внутри
+            можно навести и прочитать чары.</p>
+        </article>
+        <article class="news-card reveal">
+          <span class="tag">Экран</span>
+          <h3>Сытость и насыщение</h3>
+          <p>Одна плашка «16 · 0»: скрытое насыщение игра не показывает нигде.</p>
+        </article>
+        <article class="news-card reveal">
+          <span class="tag">Экран</span>
+          <h3>Свой список игроков</h3>
+          <p>Tab рисует мод: стекло, свой шрифт, знак-луна у своих и ограничение на число строк.</p>
+        </article>
+        <article class="news-card reveal">
+          <span class="tag">Управление</span>
+          <h3>Свои клавиши</h3>
+          <p>Отдельный экран клавиш: меню, приближение, «поставить метку здесь» и «спрятать всё, что рисует мод».</p>
+        </article>
+        <article class="news-card reveal">
+          <span class="tag">Защита</span>
+          <h3>Стоп опасной команде</h3>
+          <p>Выдача предметов и переводы денег просят подтверждения: повтори ту же строку — и она уйдёт.
+            Другая сумма спросит заново.</p>
+        </article>
+      </div>
+
+      <div class="chips" style="justify-content:center">
+        <span class="chip">Три новые темы: Роза, Изумруд, Пепел</span>
+        <span class="chip">Собрано под 1.21.11, 1.21.1 и 1.16.5</span>
+      </div>
+    </div>
+  </section>
+
   <section id="sections" style="background:var(--ground-soft);border-block:1px solid var(--line-soft)">
     <div class="wrap">
       <div class="section-head reveal">
         <span class="eyebrow">Меню мода</span>
         <h2>Двенадцать разделов под правым Shift</h2>
-        <p class="lead">Меню открывается в мире и на сервере одной клавишей — её можно сменить на правый Ctrl,
-          <kbd>Y</kbd> или <kbd>]</kbd>. У каждого пункта своя подсказка внизу окна.</p>
+        <p class="lead">Меню открывается в мире и на сервере одной клавишей — любой, какую сам назначишь
+          на экране клавиш. И в трёх видах на выбор: обычная панель, кольцо из долек или все разделы колонками.
+          У каждого пункта своя подсказка внизу окна.</p>
       </div>
 
       <div class="menus">
@@ -1063,19 +1224,21 @@
         </figure>
         <figure class="menu-card reveal">
           <img src="assets/menu-design.jpg" width="1010" height="635" alt="Раздел «Оформление» в меню мода">
-          <figcaption><strong>Оформление</strong><span>Темы, акценты, стекло, обои, клавиша меню</span></figcaption>
+          <figcaption><strong>Оформление</strong><span>Восемь тем, акценты, стекло, обои, шрифты</span></figcaption>
         </figure>
       </div>
 
       <div class="chips">
         <span class="chip">Свет и небо</span>
         <span class="chip">Плашки HUD</span>
+        <span class="chip">Предупреждения</span>
         <span class="chip">Прицел и цель</span>
         <span class="chip">Вид и камера</span>
         <span class="chip">Анимации</span>
         <span class="chip">Оформление</span>
-        <span class="chip">Предупреждения</span>
         <span class="chip">Бой</span>
+        <span class="chip">Косметика</span>
+        <span class="chip">Свечение и частицы</span>
         <span class="chip">Метки</span>
         <span class="chip">Компьютер</span>
       </div>
@@ -1123,7 +1286,8 @@
       <div class="section-head center reveal">
         <span class="eyebrow">Версии</span>
         <h2>Сейчас — бесплатно</h2>
-        <p class="lead">Мод целиком открыт: всё, что показано выше, работает без оплаты, ключей и входа.</p>
+        <p class="lead">Мод целиком открыт: всё, что показано выше, работает без оплаты, ключей и входа.
+          Собран под три версии игры: 1.21.11, 1.21.1 и 1.16.5.</p>
       </div>
 
       <div class="plans">
@@ -1131,12 +1295,13 @@
           <div class="plan-top">
             <span class="plan-name">Бесплатная</span>
             <span class="price">0 ₽</span>
-            <span class="note">версия 1.0.0 · один файл · 250 КБ</span>
+            <span class="note">версия 1.0.0 · один файл · 1.21.11, 1.21.1, 1.16.5</span>
           </div>
           <ul>
-            <li>Все десять разделов и 100+ настроек</li>
+            <li>Все двенадцать разделов и 185 настроек</li>
             <li>Свой главный экран, экран загрузки и шесть обоев</li>
-            <li>Жидкое стекло, четыре темы, восемь акцентов</li>
+            <li>Жидкое стекло, восемь тем, любой акцентный цвет</li>
+            <li>Бой, косметика, свечение и следы</li>
             <li>Плашки HUD, прицел, зум, режим слабой машины</li>
             <li>Работает на серверах, Fabric API не нужен</li>
           </ul>
@@ -1172,7 +1337,7 @@
         <div class="step reveal">
           <span class="num">Шаг 1</span>
           <h3>Скачай файл</h3>
-          <p><a href="astravisuals-1.0.0.jar" download><code>astravisuals-1.0.0.jar</code></a> — 250 КБ, внутри всё, что нужно.</p>
+          <p><a href="astravisuals-1.0.0.jar" download><code>astravisuals-1.0.0.jar</code></a> — один файл, внутри всё, что нужно.</p>
         </div>
         <div class="step reveal">
           <span class="num">Шаг 2</span>
@@ -1216,10 +1381,11 @@
   <div class="wrap foot">
     <div>
       <a class="logo" href="#top"><img class="mark" src="assets/logo/mark-moon.svg" width="16" height="16" alt="">ASTRA <b>VISUALS</b></a>
-      <p style="margin-top:10px">Клиентский мод для Minecraft 1.21.11 · Fabric<br>Все кадры на странице сняты в самой игре.</p>
+      <p style="margin-top:10px">Клиентский мод для Minecraft 1.21.11, 1.21.1 и 1.16.5 · Fabric<br>Все кадры на странице сняты в самой игре.</p>
     </div>
     <nav>
       <a href="#features">Возможности</a>
+      <a href="#new">Новое</a>
       <a href="#walls">Обои</a>
       <a href="#plans">Версии</a>
       <a href="#install">Установка</a>
