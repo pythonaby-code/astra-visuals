@@ -2,22 +2,124 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex">
-<title>Astra Visuals</title>
-<style>
-:root { color-scheme: dark; }
-body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #04030a; color: #eeeafb;
-  font: 16px/1.6 "Segoe UI", system-ui, sans-serif; padding: 24px; box-sizing: border-box; }
-main { text-align: center; max-width: 34rem; }
-h1 { font-weight: 300; font-size: 2rem; margin: 0 0 .5rem; }
-p { color: #a39cbf; margin: 0; }
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Возможности — Astra Visuals</title>
+<meta name="description" content="Что умеет Astra Visuals 2.0: меню «Модули», HUD, шейдеры, бой, небо, косметика, память сундуков и облако настроек.">
+<meta property="og:title" content="Возможности — Astra Visuals">
+<meta property="og:description" content="Что умеет Astra Visuals 2.0: меню «Модули», HUD, шейдеры, бой, небо, косметика, память сундуков и облако настроек.">
+<link rel="icon" href="v2/moon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Onest:wght@300;400;500;600&amp;display=swap">
+<link rel="stylesheet" href="v2/site.css">
 </head>
 <body>
+<header class="nav"><div class="wrap"><div class="nav-in">
+<a class="brand" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="mg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c9b6ff"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs><path d="M22.5 21.2A9.2 9.2 0 0 1 10.8 9.5a9.2 9.2 0 1 0 11.7 11.7Z" fill="url(#mg)"/><circle cx="24.5" cy="8.5" r="1.6" fill="#c9b6ff"/><circle cx="20" cy="5" r="1" fill="#c9b6ff" opacity=".7"/></svg><span>ASTRA <b>VISUALS</b></span></a>
+<nav class="nav-links" aria-label="Разделы"><a href="index.html">Главная</a><a href="features.html" aria-current="page">Возможности</a><a href="download.html">Скачать</a><a href="profile.html">Профиль</a></nav>
+<a class="btn btn-main" href="download.html">Скачать</a>
+</div></div></header>
 <main>
-<h1>Сайт временно закрыт</h1>
-<p>Скоро вернёмся.</p>
+<section class="hero" style="padding-bottom:0">
+<canvas class="eclipse" data-mode="page" aria-hidden="true"></canvas>
+<div class="wrap page-head">
+<span class="kicker reveal">Возможности</span>
+<h1 data-type="Всё, что внутри|Astra Visuals 2.0">Всё, что внутри<br>Astra Visuals 2.0</h1>
+<p class="lead reveal" data-delay="200">22 раздела и больше 380 настроек. Ниже — главное, с кадрами из игры.</p>
+</div>
+</section>
+
+<section class="wrap" style="padding-bottom:40px">
+<article class="feature reveal">
+<div class="feature-img"><img src="v2/shots/menu.jpg" alt="Меню «Модули»" loading="lazy"></div>
+<div>
+<span class="kicker">Меню</span>
+<h2>Меню «Модули»</h2>
+<p>Открывается правым Shift прямо в игре. Модуль — это карточка: включил его, и под заголовком появляются его настройки.</p>
+<ul class="ticks">
+<li>Разделы слева с числом модулей, внизу твоя голова и ник</li>
+<li>Поиск по всем разделам сразу, вставка через Ctrl+V</li>
+<li>Выпадающие списки, ползунки с окошком числа, переключатели</li>
+<li>Тёмный, светлый и неоновый вид — переключает луна наверху</li>
+<li>Остались и прежние меню: панель, круг и колонки</li>
+</ul>
+</div>
+</article>
+
+<article class="feature reveal">
+<div class="feature-img"><img src="v2/shots/hud.jpg" alt="HUD «Модули» с миникартой" loading="lazy"></div>
+<div>
+<span class="kicker">HUD</span>
+<h2>Плашки, которые собираешь сам</h2>
+<p>Шесть панелей в одном стиле. Каждую можно выключить и перетащить мышью в «Расположении плашек».</p>
+<ul class="ticks">
+<li>Пилюля сверху: знак, ник, кадры и пинг</li>
+<li>Процессор, память и кадры — сколько берёт сама игра</li>
+<li>Миникарта: местность и твои метки, поворачивается за взглядом</li>
+<li>Клавиши мода, координаты и скорость в блоках в секунду</li>
+<li>Свой хотбар: выбранная ячейка светится акцентом</li>
+</ul>
+<p class="note">На миникарте нет игроков и мобов. Это был бы радар, а за радар на PvP-серверах банят.</p>
+</div>
+</article>
+
+<article class="feature reveal">
+<div class="feature-img"><img src="v2/shots/trail.jpg" alt="След за мечом" loading="lazy"></div>
+<div>
+<span class="kicker">Шейдеры</span>
+<h2>Свет, который двигается</h2>
+<p>Эффекты нарисованы поверх кадра своими средствами, поэтому работают во всех трёх версиях игры и почти не стоят кадров.</p>
+<ul class="ticks">
+<li>Светящийся след за мечом, топором и трезубцем</li>
+<li>Обводка блока: ровная, дыхание, переливы или сияние с искрами</li>
+<li>Круги по земле при прыжке и приземлении</li>
+<li>Живой плащ: волны по ткани, перелив и мерцающие звёзды</li>
+</ul>
+</div>
+</article>
+
+<article class="feature reveal">
+<div class="feature-img"><img src="v2/shots/pet.jpg" alt="Питомец и плащ" loading="lazy"></div>
+<div>
+<span class="kicker">Косметика</span>
+<h2>Питомцы и вещи на игроке</h2>
+<p>Шляпы, нимб, крылья, плащ, спутники и питомцы. Их видят все, у кого стоит мод.</p>
+<ul class="ticks">
+<li>Котик, лисёнок, дракончик и пчёлка — пиксель-арт 24×24</li>
+<li>Свет сверху-слева, мягкий контур, большие глаза с бликом</li>
+<li>Питомец бежит следом и подпрыгивает на ходу, пчёлка летает</li>
+</ul>
+</div>
+</article>
+
+<article class="feature reveal">
+<div class="feature-img"><img src="v2/shots/outline.jpg" alt="Обводка блока" loading="lazy"></div>
+<div>
+<span class="kicker">Удобство</span>
+<h2>Сундуки, облако и отчёт об ошибке</h2>
+<ul class="ticks">
+<li>Память сундуков: что лежало в открытых тобой сундуках, бочках и шалкерах, и поиск по предмету</li>
+<li>Отметка над сундуком видна, только когда он перед глазами</li>
+<li>Облако настроек через лаунчер: другой компьютер — те же меню, тема и HUD</li>
+<li>Отчёт об ошибке одной кнопкой: журнал и настройки без личного в один zip</li>
+</ul>
+<p class="note">Метки, тайники, сундуки и друзья никуда не отправляются: ни в облако, ни другу вместе с настройками.</p>
+</div>
+</article>
+</section>
+
+<section class="wrap" style="padding-bottom:90px">
+<div class="cta reveal">
+<h2 class="h2"><span class="shine">Попробуй сам</span></h2>
+<p>Лаунчер поставит игру и мод за пару минут.</p>
+<a class="btn btn-main" href="download.html">Скачать AstraClient</a>
+</div>
+</section>
 </main>
+<footer><div class="wrap foot">
+<div>© 2026 Astra Visuals · Не является официальным продуктом Minecraft. Не связан с Mojang и Microsoft.</div>
+<nav aria-label="Внизу"><a href="features.html">Возможности</a><a href="download.html">Скачать</a><a href="profile.html">Профиль</a><a href="changes/">Что нового</a></nav>
+</div></footer>
+<script src="v2/site.js"></script>
 </body>
 </html>

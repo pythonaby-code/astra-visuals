@@ -2,22 +2,134 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex">
-<title>Astra Visuals</title>
-<style>
-:root { color-scheme: dark; }
-body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #04030a; color: #eeeafb;
-  font: 16px/1.6 "Segoe UI", system-ui, sans-serif; padding: 24px; box-sizing: border-box; }
-main { text-align: center; max-width: 34rem; }
-h1 { font-weight: 300; font-size: 2rem; margin: 0 0 .5rem; }
-p { color: #a39cbf; margin: 0; }
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Профиль — Astra Visuals</title>
+<meta name="description" content="Профиль Astra: звёзды, купленные темы, подписка и облако настроек.">
+<meta property="og:title" content="Профиль — Astra Visuals">
+<meta property="og:description" content="Профиль Astra: звёзды, купленные темы, подписка и облако настроек.">
+<link rel="icon" href="v2/moon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Onest:wght@300;400;500;600&amp;display=swap">
+<link rel="stylesheet" href="v2/site.css">
 </head>
 <body>
+<header class="nav"><div class="wrap"><div class="nav-in">
+<a class="brand" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="mg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c9b6ff"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs><path d="M22.5 21.2A9.2 9.2 0 0 1 10.8 9.5a9.2 9.2 0 1 0 11.7 11.7Z" fill="url(#mg)"/><circle cx="24.5" cy="8.5" r="1.6" fill="#c9b6ff"/><circle cx="20" cy="5" r="1" fill="#c9b6ff" opacity=".7"/></svg><span>ASTRA <b>VISUALS</b></span></a>
+<nav class="nav-links" aria-label="Разделы"><a href="index.html">Главная</a><a href="features.html">Возможности</a><a href="download.html">Скачать</a><a href="profile.html" aria-current="page">Профиль</a></nav>
+<a class="btn btn-main" href="download.html">Скачать</a>
+</div></div></header>
 <main>
-<h1>Сайт временно закрыт</h1>
-<p>Скоро вернёмся.</p>
+<section class="hero" style="padding-bottom:0">
+<canvas class="eclipse" data-mode="page" aria-hidden="true"></canvas>
+<div class="wrap page-head">
+<span class="kicker reveal">Профиль</span>
+<h1 data-type="Твой аккаунт|Astra">Твой аккаунт<br>Astra</h1>
+<p class="lead reveal" data-delay="200">Тот же аккаунт, что в лаунчере: звёзды, купленные темы и облако настроек.</p>
+</div>
+</section>
+
+<section class="wrap" style="padding-bottom:90px">
+<div class="profile">
+<form class="panel reveal" id="login" autocomplete="on" novalidate>
+<h2 style="font-size:24px;margin-bottom:18px">Вход</h2>
+<div class="field"><label for="email">Почта</label><input id="email" type="email" autocomplete="email" placeholder="you@example.com" required></div>
+<div class="field"><label for="pass">Пароль</label><input id="pass" type="password" autocomplete="current-password" placeholder="Не короче 8 знаков" required></div>
+<p class="msg" id="msg" role="status"></p>
+<button class="btn btn-main" type="submit" id="go">Войти</button>
+<p style="color:var(--dim);font-size:13px;margin:18px 0 0">Нет аккаунта? Его создают в лаунчере — <a href="download.html">скачать</a>.</p>
+<button class="btn" type="button" id="out" hidden style="margin-top:14px">Выйти</button>
+</form>
+
+<div class="panel reveal" data-delay="120" id="card">
+<div class="who">
+<div class="avatar" id="av">И</div>
+<div>
+<span class="badge" id="state">пример</span>
+<h2 id="nick">Игрок</h2>
+<p id="since">В Astra с 13 сентября 2026</p>
+</div>
+</div>
+<div class="tiles">
+<div class="tile"><span>Звёзды</span><strong id="stars">340</strong></div>
+<div class="tile"><span>Дней подряд</span><strong id="streak">6</strong></div>
+<div class="tile"><span>Подписка</span><strong id="sub" style="font-size:20px">Бесплатная</strong></div>
+</div>
+<h3 style="font-weight:500;font-size:17px;margin-top:26px">Куплено</h3>
+<div class="chips" id="owned"><span class="chip">Тема «Неон»</span><span class="chip">Тема «Лазурь»</span><span class="chip">Конфиг автора</span></div>
+<h3 style="font-weight:500;font-size:17px;margin-top:26px">Облако настроек</h3>
+<p style="color:var(--muted);margin:6px 0 0" id="cloud">Сохранено 3 октября в 07:00 · 7,8 КБ</p>
+<p class="note" id="hint">Это пример. Войди слева — и здесь будет твой профиль.</p>
+</div>
+</div>
+</section>
 </main>
+<script>
+/* Профиль: вход тем же аккаунтом, что и в лаунчере. Токен — только в этом браузере. */
+(function () {
+  var API = 'https://astra-client.astravisuals.workers.dev/web';
+  var $ = function (id) { return document.getElementById(id); };
+  function load(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function save(k, v) { try { v === null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} }
+  function post(path, body) {
+    return fetch(API + path, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) })
+      .then(function (r) { return r.json().then(function (j) { j.status = r.status; return j; }); });
+  }
+  function when(ms) {
+    var d = new Date(ms);
+    return d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' }) + ' в ' + d.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+  }
+  function show(p) {
+    $('state').textContent = 'вы вошли';
+    $('nick').textContent = p.nick;
+    $('av').textContent = (p.nick || '?').charAt(0).toUpperCase();
+    $('since').textContent = 'В Astra с ' + p.since + ' · ' + p.email;
+    $('stars').textContent = p.stars;
+    $('streak').textContent = p.streak;
+    $('sub').textContent = p.sub;
+    var o = $('owned'); o.innerHTML = '';
+    (p.owned.length ? p.owned : ['Пока ничего — звёзды тратятся в лаунчере']).forEach(function (n) {
+      var s = document.createElement('span'); s.className = 'chip'; s.textContent = n; o.appendChild(s);
+    });
+    $('cloud').textContent = p.cloudAt ? 'Сохранено ' + when(p.cloudAt) + ' · ' + (p.cloudBytes / 1024).toFixed(1).replace('.', ',') + ' КБ'
+      : 'Пусто: настройки уедут в облако после первой игры через лаунчер 2.0';
+    $('hint').hidden = true;
+    $('out').hidden = false;
+  }
+  function me(token) {
+    return post('/me', { token: token }).then(function (r) {
+      if (r.ok) show(r); else if (r.status === 401) save('astra_token', null);
+      return r;
+    });
+  }
+  var t = load('astra_token');
+  if (t) me(t).catch(function () {});
+  $('login').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = $('email').value.trim(), pass = $('pass').value;
+    if (!email || pass.length < 8) { $('msg').textContent = 'Введи почту и пароль от аккаунта Astra (не короче 8 знаков).'; return; }
+    $('go').disabled = true; $('msg').textContent = '';
+    post('/login', { email: email, password: pass }).then(function (r) {
+      $('go').disabled = false;
+      if (!r.ok) { $('msg').textContent = r.error || 'Не получилось войти'; return; }
+      save('astra_token', r.token); $('pass').value = '';
+      return me(r.token);
+    }).catch(function () {
+      $('go').disabled = false;
+      $('msg').textContent = 'Сервер не ответил. Проверь интернет и попробуй ещё раз.';
+    });
+  });
+  $('out').addEventListener('click', function () {
+    var tk = load('astra_token'); save('astra_token', null);
+    if (tk) post('/logout', { token: tk }).catch(function () {});
+    location.reload();
+  });
+})();
+</script>
+<footer><div class="wrap foot">
+<div>© 2026 Astra Visuals · Не является официальным продуктом Minecraft. Не связан с Mojang и Microsoft.</div>
+<nav aria-label="Внизу"><a href="features.html">Возможности</a><a href="download.html">Скачать</a><a href="profile.html">Профиль</a><a href="changes/">Что нового</a></nav>
+</div></footer>
+<script src="v2/site.js"></script>
 </body>
 </html>
